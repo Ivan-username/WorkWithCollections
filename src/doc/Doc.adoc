@@ -1,0 +1,42 @@
+
+//Option
+//    count 40
+//    packet 18617
+//    length 5
+
+== Client
+    work(pathWay, pathLegend, option)
+
+== Client
+    work(pathWay, pathLegend, count: Int)
+    work(pathWay, pathLegend, count: Int, packet)
+
+
+
+== Reader
+    list<StatusWay> readWay(path)
+    list<Legend> readLead(path)
+
+== Analize
+    Role - Count
+
+
+== DiagramManager
+
+
+== Preparation
+
+    list<StatusWay> readWay(path)
+    list<Legend> readLead(path)
+    -->
+    Map<String, List<Role>>
+    List<Legend>
+
+
+== Printer
+    Name
+    List<Legend>
+    Map<String, List<Role>>  [123 --> 125: DU_ROUTE, DU_OPP_ROUTE]
+
+
+

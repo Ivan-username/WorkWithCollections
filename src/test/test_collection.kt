@@ -1,4 +1,4 @@
-
+package test
 
 import java.io.File
 import java.util.*
@@ -11,7 +11,7 @@ import statusInfo.*
 //    }
 //}
 //
-//internal fun main(){
+//internal fun test.main(){
 //
 //
 //    val result = listOf(

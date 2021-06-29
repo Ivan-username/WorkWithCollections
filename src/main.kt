@@ -11,7 +11,7 @@ internal fun main(){
 //    todo ------------------------ ВВОД ДАННЫХ ДЛЯ ФИЛЬТРАЦИИ---------------------
     val scan = Scanner(System.`in`)
     println("Enter the package, please")
-    val paket = 10817
+    val paket = 10816
     println("Enter the admins, please")
 //    val admins = scan.nextLine().split(",")
     println("a;fjdnv;cvjn")
@@ -28,6 +28,11 @@ internal fun main(){
 //    val statusWayClass = StatusWay(listStatusWay)
 //    statusWayClass.statusWayChanger() )
     convertingWaysAndInfo(listStatusWay, paket, admins, listStatusInfo)
+
+
+//    convertingWaysAndInfo(listStatusWay, 10816, listOf("DU_ROOT"), listStatusInfo)
+//    convertingWaysAndInfo(listStatusWay, 10816, listOf("DU_ADMIN"), listStatusInfo)
+//    convertingWaysAndInfo(listStatusWay, 10817, listOf("DU_ROOT"), listStatusInfo)
 }
 
 fun convertingWaysAndInfo(listStatusWay: List<String>, paket: Int, admins: List<String>, listStatusInfo: List<String>){
@@ -43,6 +48,8 @@ fun convertingWaysAndInfo(listStatusWay: List<String>, paket: Int, admins: List<
                 )
         )
     }
+    listStatusWayRoute.groupBy ({ it.source}, {it.target})
+    println(listStatusWayRoute)
 
     val listStatusInfoLegend = mutableListOf<Legend>()
     for (i in listStatusInfo.withIndex()) {
@@ -54,5 +61,15 @@ fun convertingWaysAndInfo(listStatusWay: List<String>, paket: Int, admins: List<
                 )
         )
     }
-    WaysRemover(listStatusWayRoute, paket, admins, listStatusInfoLegend).remover()
+
+
+
+    val statusInfoLegendMap = listStatusInfoLegend.map { it.target to it }.toMap()
+//     listStatusInfoLegend.map { it.target to it }.toMap()
+
+    val diagramName = admins.toString()
+    println("[plantuml,$diagramName,svg,opts=\"inline\",svg-type=\"inline\"]")
+    println("----")
+    WaysRemover(listStatusWayRoute, paket, admins, statusInfoLegendMap).remover()
+    println("----")
 }
